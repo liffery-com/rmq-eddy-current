@@ -1,0 +1,16 @@
+# keep gitkeep
+!.gitkeep
+cache
+
+# dependencies
+node_modules
+
+# ide
+.idea/workspace.xml
+
+# Generated
+coverage/
+testserver/
+jest/
+.DS_Store
+npm-debug.log
