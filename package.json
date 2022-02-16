@@ -1,6 +1,6 @@
 {
   "name": "rmq-eddy-current",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A small TS node package for offsetting work to RMQ with the intention of consuming the work by the emitter (or 1 of the emitters in the cluster)",
   "repository": {
     "type": "git",
