@@ -1,31 +1,36 @@
 {
-  "name": "typescript-npm-package-tpl",
-  "version": "1.0.0",
-  "description": "A set of files to get moving for a typescript npm package, remove all not required",
+  "name": "rmq-eddy-current",
+  "version": "0.0.2",
+  "description": "A small TS node package for offsetting work to RMQ with the intention of consuming the work by the emitter (or 1 of the emitters in the cluster)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liffery-com/rmq-eddy-current.git"
+  },
+  "author": "John Carmichael",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liffery-com/rmq-eddy-current/issues"
+  },
+  "homepage": "https://github.com/liffery-com/rmq-eddy-current#readme",
   "licence": "MIT",
-  "main": "./build/index.js",
+  "main": "./build/Eddy.js",
+  "types": "./build/Eddy.js",
   "scripts": {
     "install:githooks": "cp ./githooks/* .git/hooks",
     "test": "npm run lint && npm run test:unit",
-    "test:unit": "npm run build && jest",
+    "test:unit": "echo 'TODO npm run build && jest'",
     "test:unit:single": "jest --collect-coverage false",
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
     "build:tocs": "npx doctoc .",
     "build": "rm -fR ./build && ttsc -p . --declaration --declarationDir build",
     "build:watch": "ttsc --watch -p .",
-    "start": "node cli.js",
     "prepublishOnly": "npm run lint && npm run test"
   },
-  "repository": {
-    "type": "git",
-    "url": "??"
-  },
-  "keywords": [
-    "TypeScript"
-  ],
-  "dependencies": {
-    "tslib": "^2.3.1"
+  "peerDependencies": {
+    "q-wrapper": "^1.0.0",
+    "@types/amqplib": "^0.5.13",
+    "amqplib": "^0.5.5"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
@@ -38,6 +43,7 @@
     "jest": "^27.5.1",
     "ts-jest": "^27.1.3",
     "ttypescript": "^1.5.13",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "tslib": "^2.3.1"
   }
 }
