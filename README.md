@@ -73,15 +73,15 @@ someQueue.publish({
 ```
 
 ## Scenario
-1. You have *n services
+1. You have *n services in 1 cluster, ie they are clones of each other
 2. A job comes in to process 20k records
-3. You throw each record to a Q, 1 by 1, in seconds
-4. Your same service then consumes 1 by 1 an item from the q
+3. 1 of the services in your cluster throws each record to the Q, 1 by 1, in seconds
+4. All services in your cluster consume the q (as they are all connected to it)
 
 ## When to use a rmq-eddy-current
 Typically, you would employ dedicated workers for this kind of work. However, there are complexities with workers, firstly they must be co-ordinated and maintained.
 
-When you have highly infrequent workloads (typically backoffice kind of stuff) 10k records to parse here and there, it is far more cost-effective to let the service which enqueues the work to also process the work as the performance of that service is not mission critical. Think of it like an eddy current in a stream, the main body of water for the service is flowing but little eddy's quickly spin up do their work then spin down.
+When you have highly infrequent workloads (typically backoffice kind of stuff) 10k records to parse here and there, it is far more cost-effective to let the service which enqueues the work to also process the work. Assuming performance of that service is not mission critical. Think of it like an eddy current in a stream, the main body of water for the service is flowing but little eddy's quickly spin up do their work then spin down.
 
 ## When to not use and eddy
 When doing the work would impact the performance of the app to an audience which should not be affected... for example, your customers. Or when the work load is fair consistent, like every 2nd day you need to chunk through a lot of data.
