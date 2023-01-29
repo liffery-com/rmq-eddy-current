@@ -28,7 +28,7 @@ export class Eddy<T> {
           )
         );
       } catch (e) {
-        console.error(message.fields.routingKey, e);
+        console.error('ERROR WITH ROUTING KEY IN EDDY', message.fields.routingKey);
         return { processed: false, requeue: false };
       }
     });
